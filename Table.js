@@ -65,7 +65,7 @@ function soothDist(table) {
 	// get to each leaf node, figure out % chance of it happening, what it's sooth would be, add it to list
 	let likelihood = 1
 	let soothSum = 0
-	let soothDist = calcSoothDist(
+	soothDist = calcSoothDist(
 		table,
 		soothDist,
 		tableStack,
