@@ -1,0 +1,7 @@
+/*
+land use
+freshwater source
+exports
+natural resources
+human resources
+*/

@@ -23,7 +23,7 @@ function rollOnTable(table, targetSooth) {
 	while (leadingIndex > -1) {
 		laggingIndex = str.search(`\\]`)
 		if (laggingIndex <= leadingIndex) {
-			console.log('WARNING: Expected ] in table string')
+			console.log(`WARNING: Expected ] in ${table.name} string`)
 			break
 		}
 		// get table name
@@ -57,6 +57,10 @@ function getTableByName(name) {
 	return res
 }
 
+function rollTablebyName(name) {
+	let table = getTableByName(name)
+	return rollOnTable(table)
+}
 // tables.forEach((table) => {
 // 	console.log(`${table.name} vs ${name}`)
 // 	if (table.name == name) return table
@@ -70,4 +74,5 @@ module.exports = {
 	newTable,
 	rollOnTable,
 	getTableByName,
+	rollTablebyName,
 }
