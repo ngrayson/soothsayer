@@ -1,6 +1,11 @@
 const tableManager = require('./tableManager')
+const environmentTables = require('./environmentTables')
 
 let tables = {}
+
+tables.completeCulture = [
+	['Environment:\n[environment]\nEconomics:\n[economics]', 0],
+]
 
 tables.culturalElements = [
 	['[environment]', 0],
@@ -14,22 +19,10 @@ tables.culturalElements = [
 	['[size]', 0],
 ]
 
-tables.environment = [
-	['They live in a [biome], with [severity] adaptations', 0],
-]
-
-tables.severity = [
-	['high', 3],
-	['medium', 2],
-	['low', 1],
-	['none', 0],
-]
-
 const initializeEconomics = () => {
 	tables.economics = [
 		[
-			'Currency: [currency]\n\n[marketplaceStyle]\n' +
-				'\nResources:\n[resources]',
+			'Currency: [currency]\n[marketplaceStyle]\n' + 'Resource:\n[resource]',
 			1,
 		],
 	]
@@ -37,8 +30,8 @@ const initializeEconomics = () => {
 	tables.currency = [
 		['they use the currency of another land', 0],
 		['they use the common currency', 0],
-		['they use their own currency (one of their resources)', 1],
-		['everything is done in the basis of favors and reciprocity', 21],
+		['they use their own currency (one of their resource)', 1],
+		['much of trade is done on the basis of favors and reciprocity', 13],
 		[
 			'basic needs are free but everyone must spend half the year working on [duty]',
 			21,
@@ -64,7 +57,7 @@ const initializeEconomics = () => {
 		['Goods are purchased from  a for-profit delivery organization', 8],
 	]
 
-	tables.resources = [
+	tables.resource = [
 		['[naturalResource] which is/are used [resourceUse]', 5],
 		[
 			'[naturalResource] which is/are used [resourceUse]\n[naturalResource] which is/are used [resourceUse]',
@@ -142,6 +135,7 @@ const initializeEconomics = () => {
 		['bark', 2],
 		['sap', 3],
 		['flowers', 1],
+		['plants taller than buildings', 3],
 	]
 
 	tables.abioticResource = [
@@ -149,6 +143,7 @@ const initializeEconomics = () => {
 		['gems', 1],
 		['oil', 1],
 		['wind', 21],
+		['natural landmarks', 3],
 		['naturally occuring "magic"', 3],
 	]
 
@@ -165,7 +160,7 @@ const initializeEconomics = () => {
 		['celestial navigation', 8],
 		['compass crafting', 3],
 		['metallurgy', 3],
-		['architecture', 5],
+		['architecture', 2],
 		['advanced agricultural methods', 5],
 		['wagonwrighting', 3],
 		['pottery', 5],
@@ -197,7 +192,6 @@ const initializeEconomics = () => {
 		['weaponcrafting', 3],
 		['armorcrafting', 3],
 		['shieldcrafting', 3],
-		['fletching', 3],
 		['seige weapons', 8],
 	]
 
@@ -219,6 +213,6 @@ initializeEconomics()
 Object.entries(tables).forEach((table) => {
 	tableManager.newTable(table[0], table[1])
 })
-let res = tableManager.rollTablebyName('economics')
+let res = tableManager.rollTablebyName('completeCulture')
 console.log(`sooth: ${res[1]}`)
 console.log(res[0])

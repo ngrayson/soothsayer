@@ -22,21 +22,27 @@ let Table = class Table {
 
 		if (!extraColumns) extraColumns = []
 
-		for (let entryIndex = 0; entryIndex < entries.length; entryIndex++) {
-			let entry = entries[entryIndex]
+		if (typeof Array.isArray(entries)) {
+			for (let entryIndex = 0; entryIndex < entries.length; entryIndex++) {
+				let entry = entries[entryIndex]
 
-			if (typeof entry[0] != 'string')
-				throw `Each entry must have a nanme of type string, entry ${entryIndex} has type ${typeof entry[0]}`
+				if (typeof entry[0] != 'string')
+					throw `Each entry must have a nanme of type string, entry ${entryIndex} has type ${typeof entry[0]}`
 
-			if (typeof entry[1] != 'number')
-				throw `Each entry must have a sooth of type number, entry ${entryIndex} has type ${typeof entry[0]}`
+				if (typeof entry[1] != 'number')
+					throw `Each entry must have a sooth of type number, entry ${entryIndex} has type ${typeof entry[0]}`
 
-			if (extraColumns.length + 2 != entry.length) {
-				throw `Incomplete table, each entry must have all columns filled`
+				if (extraColumns.length + 2 != entry.length) {
+					throw `Incomplete table, each entry must have all columns filled`
+				}
 			}
+			this.entries = entries
+			this.soothDist
+		} else if (typeof entries == 'object') {
+			//to do
+		} else {
+			throw 'entries must be of type array or object, not ' + typeof entries
 		}
-		this.entries = entries
-		this.soothDist
 	}
 	roll(targetSooth) {
 		if (!targetSooth) {
