@@ -1,10 +1,12 @@
 let biome: Biome = Biome.Blackford_Island
 let weather: Weather = Weather.High_Clouds
-const generateEncounter(biome: Biome, Weather: Weather) => {
+const generateEncounter = function (biome: Biome, weather: Weather): string {
   let availableEntities: Array<Entity> = []
   entities.forEach(entity => {
     
+
   })
+  return "dfas"
 // create table
   // biome-rooted entities
     // modify by weather
