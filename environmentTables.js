@@ -251,9 +251,9 @@ const loadTables = () => {
 }
 
 loadTables()
-// let res = tableManager.rollTablebyName('environment')
-// console.log(`sooth: ${res[1]}`)
-// console.log(res[0])
+let res = tableManager.rollTablebyName('environment')
+console.log(`sooth: ${res[1]}`)
+console.log(res[0])
 
 module.exports = loadTables
 //roll

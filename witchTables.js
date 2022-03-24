@@ -99,7 +99,7 @@ let tattooLocationEntries = [
 
 let familiarEntries = [
 	['fat pidgeon', 6],
-	['raven-mounted crow', 21],
+	['[creepyCreature]-mounted [creepyCreature', 21],
 	['mouse wearing the same outfit', 13],
 	['fat black shiba', 3],
 	['enchanted gourd', 5],
