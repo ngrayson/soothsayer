@@ -1,4 +1,6 @@
-import {Map, Biome, Fauna, Faction, Flora, Landmark, Weather} from './soothsayerInterfaces'
+import { Map } from './Map'
+import math, { Matrix } from 'mathjs'
+import {Biome, Fauna, Faction, Flora, Landmark, Weather} from './soothsayerInterfaces'
 
 class World {
   name: string
@@ -10,21 +12,22 @@ class World {
   landmarks: Array<Landmark>
   weather: Array<Weather>
   relationships: {
-    fauna_fauna: Array<Array<number>>,
-    fauna_flora: Array<Array<number>>,
-    fauna_landmark: Array<Array<number>>,
-    fauna_weather: Array<Array<number>>,
-    flora_weather: Array<Array<number>>,
-    flora_landmark: Array<Array<number>>,
-    weather_biome: Array<Array<number>>,
-    weather_weather: Array<Array<number>>,
-    biome_biome: Array<Array<number>>,
-    fauna_biome: Array<Array<number>>,
-    flora_biome: Array<Array<number>>,
-    biome_landmark: Array<Array<number>>
+    fauna_fauna: Matrix,
+    fauna_flora: Matrix,
+    fauna_landmark: Matrix,
+    fauna_weather: Matrix,
+    flora_weather: Matrix,
+    flora_landmark: Matrix,
+    weather_biome: Matrix,
+    weather_weather: Matrix,
+    biome_biome: Matrix,
+    fauna_biome: Matrix,
+    flora_biome: Matrix,
+    biome_landmark: Matrix
   }
   constructor(name: string) {
-    this.map = {xrange:10,yrange:10,zrange:3}
+    this.name = name
+    this.map = new Map
     this.biomes = []
     this.fauna = []
     this.factions = []
@@ -32,19 +35,38 @@ class World {
     this.landmarks = []
     this.weather = []
     this.relationships = {
-      fauna_fauna: [[]],
-      fauna_flora: [[]],
-      fauna_landmark: [[]],
-      fauna_weather: [[]],
-      flora_weather: [[]],
-      flora_landmark: [[]],
-      weather_biome: [[]],
-      weather_weather: [[]],
-      biome_biome: [[]],
-      fauna_biome: [[]],
-      flora_biome: [[]],
-      biome_landmark: [[]]
+      fauna_fauna: math.matrix(),
+      fauna_flora: math.matrix(),
+      fauna_landmark: math.matrix(),
+      fauna_weather: math.matrix(),
+      flora_weather: math.matrix(),
+      flora_landmark: math.matrix(),
+      weather_biome: math.matrix(),
+      weather_weather: math.matrix(),
+      biome_biome: math.matrix(),
+      fauna_biome: math.matrix(),
+      flora_biome: math.matrix(),
+      biome_landmark: math.matrix()
     }
   }
 
+  setName = (newName: string) => this.name = newName
+  
+  setMap = (newMap: Map) => this.map = newMap
+
+  addBiome = (biome: Biome) => {
+    // add biome to biome array
+    // add biome column and row to biome-related matricees
+  }
+
+  removeBiome = (biome: Biome) => {
+    // find biome in biome array
+    // remove biome columns and rows from biome-related matricees
+    // 
+  }
+
+  validate = () => {
+    // validate differente parts of the world
+    // length of list of stuff and dimensions of arrays
+  }
 }
